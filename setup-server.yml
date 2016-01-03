@@ -1,0 +1,7 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  roles:
+    - terminal
+
+# vim: set ts=2 sw=2 et:

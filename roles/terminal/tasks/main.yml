@@ -1,0 +1,11 @@
+- name:
+  apt: name={{item}} state=installed
+  with_items:
+    - aptitude
+    - git
+    - etckeeper
+    - ssh
+    - vim
+    - tmux
+
+# vim: set ts=2 sw=2 et:

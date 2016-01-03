@@ -1,0 +1,24 @@
+- name: install packages
+  sudo: yes
+  apt: name={{ item }} state=installed
+  with_items:
+    - git
+    - mercurial
+
+- name: create base directory
+  file: path={{ redmine_home }} recurse=yes state=directory
+
+- name: download redmine
+  git: repo=https://github.com/redmine/redmine.git version=3.2-stable dest={{ redmine_home }}
+
+- name: coopy config files
+  copy: src=database.yml dest={{ redmine_home }}/config/database.yml
+
+- name: install redmine
+  shell: bundle install --local path=vendor/bundle --without production chdir={{ redmine_home }}
+
+- name: generate secret token
+  shell: rake generate_secret_token chdir={{ redmine_home }}
+
+- name: migration for redmine
+  shell: rake db:migrate chdir={{ redmine_home }}

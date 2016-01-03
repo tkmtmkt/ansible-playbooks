@@ -1,0 +1,9 @@
+- name: download themes (git)
+  git: repo={{ item.url }} dest={{ redmine_home }}/public/themes/{{ item.name }} version={{ item.rev }}
+  with_items:
+    - { name: bavarian_dawn, url: "https://github.com/AlphaNodes/bavarian_dawn.git", rev: master }
+    - { name: farend_basic, url: "https://github.com/farend/redmine_theme_farend_basic.git", rev: master }
+    - { name: farend_fancy, url: "https://github.com/farend/redmine_theme_farend_fancy.git", rev: master }
+    - { name: gitmike, url: "https://github.com/makotokw/redmine-theme-gitmike.git", rev: master }
+    - { name: reevo, url: "https://github.com/reevosocial/reevo-redmine-theme.git", rev: master }
+    - { name: twitter-bootstrap-ja, url: "https://github.com/toshikitani/redmine-twitter-bootstrap-ja.git", rev: master }

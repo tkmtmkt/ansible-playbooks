@@ -1,0 +1,3 @@
+- include: redmine.yml
+- include: plugins.yml
+- include: themes.yml
